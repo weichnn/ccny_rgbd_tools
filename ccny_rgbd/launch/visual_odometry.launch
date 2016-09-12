@@ -21,15 +21,21 @@
     
     -->
     
+    <remap from="/rgbd/depth" to="/camera/depth/image"/>
+    <remap from="/rgbd/rgb"   to="/camera/rgb/image_color"/>
+    <remap from="/rgbd/info"  to="/camera/rgb/camera_info"/>   
+    
+
+
     #### diagnostics ##################################
         
-    <param name="verbose"     value="true"/>    
+    <param name="verbose"     value="false"/>    
     
     #### frames and tf output #########################
     
     <param name="publish_tf"  value="true"/>
     <param name="fixed_frame" value="/odom"/>
-    <param name="base_frame"  value="/camera_link"/>
+    <param name="base_frame"  value="/openni_rgb_optical_frame"/>
        
     #### features #####################################
     
