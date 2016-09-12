@@ -22,7 +22,7 @@
  */
 
 #include "ccny_rgbd/apps/visual_odometry.h"
-
+#include "stdio.h"
 namespace ccny_rgbd {
   
 VisualOdometry::VisualOdometry(
@@ -373,7 +373,14 @@ void VisualOdometry::publishPath(const std_msgs::Header& header)
   pose_stamped.header.stamp = header.stamp;
   pose_stamped.header.frame_id = fixed_frame_;
   tf::poseTFToMsg(f2b_, pose_stamped.pose);
-
+  //printf("path\n");
+  std::cout << f2b_.getOrigin().getX() << ","
+            << f2b_.getOrigin().getY() << ","
+            << f2b_.getOrigin().getZ() << ","
+            << f2b_.getRotation().getX() << ","
+            << f2b_.getRotation().getY() << ","
+            << f2b_.getRotation().getZ() << ","
+            << f2b_.getRotation().getW() << std::endl;
   path_msg_.poses.push_back(pose_stamped);
   path_pub_.publish(path_msg_);
 }
